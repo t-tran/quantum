@@ -17,9 +17,9 @@ services:
       - NET_ADMIN
       - NET_RAW
     volumes:
-      - $GOPATH/bin/quantum:/bin/quantum
-      - $GOPATH/src/github.com/supernomad/quantum/dist/ssl/certs/:/etc/quantum/ssl/certs/:ro
-      - $GOPATH/src/github.com/supernomad/quantum/dist/ssl/keys/:/etc/quantum/ssl/keys/:ro
+      - ./bin/quantum:/bin/quantum
+      - ./dist/ssl/certs/:/etc/quantum/ssl/certs/:ro
+      - ./dist/ssl/keys/:/etc/quantum/ssl/keys/:ro
       - quantum0:/var/lib/quantum/
     networks:
       local:
@@ -63,9 +63,9 @@ services:
       - NET_ADMIN
       - NET_RAW
     volumes:
-      - $GOPATH/bin/quantum:/bin/quantum
-      - $GOPATH/src/github.com/supernomad/quantum/dist/ssl/certs/:/etc/quantum/ssl/certs/:ro
-      - $GOPATH/src/github.com/supernomad/quantum/dist/ssl/keys/:/etc/quantum/ssl/keys/:ro
+      - ./bin/quantum:/bin/quantum
+      - ./dist/ssl/certs/:/etc/quantum/ssl/certs/:ro
+      - ./dist/ssl/keys/:/etc/quantum/ssl/keys/:ro
       - quantum1:/var/lib/quantum/
     environment:
       QUANTUM_UNENCRYPTED: "true"
@@ -99,10 +99,10 @@ services:
       - NET_ADMIN
       - NET_RAW
     volumes:
-      - $GOPATH/bin/quantum:/bin/quantum
-      - $GOPATH/src/github.com/supernomad/quantum/dist/docker/quantum.yml:/etc/quantum/quantum.yml:ro
-      - $GOPATH/src/github.com/supernomad/quantum/dist/ssl/certs/:/etc/quantum/ssl/certs/:ro
-      - $GOPATH/src/github.com/supernomad/quantum/dist/ssl/keys/:/etc/quantum/ssl/keys/:ro
+      - ./bin/quantum:/bin/quantum
+      - ./dist/docker/quantum.yml:/etc/quantum/quantum.yml:ro
+      - ./dist/ssl/certs/:/etc/quantum/ssl/certs/:ro
+      - ./dist/ssl/keys/:/etc/quantum/ssl/keys/:ro
       - quantum2:/var/lib/quantum/
     environment:
       QUANTUM_CONF_FILE: "/etc/quantum/quantum.yml"
@@ -119,8 +119,8 @@ services:
       - "etcd.quantum.dev:fd00:dead:beef::4"
     volumes:
       - etcd:/var/lib/etcd
-      - $GOPATH/src/github.com/supernomad/quantum/dist/ssl/certs/:/etc/etcd/ssl/certs/:ro
-      - $GOPATH/src/github.com/supernomad/quantum/dist/ssl/keys/:/etc/etcd/ssl/keys/:ro
+      - ./dist/ssl/certs/:/etc/etcd/ssl/certs/:ro
+      - ./dist/ssl/keys/:/etc/etcd/ssl/keys/:ro
     ports:
       - 2379:2379
     networks:
