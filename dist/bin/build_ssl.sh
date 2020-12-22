@@ -7,4 +7,5 @@ echo "Using '$cores' cores for compiliation of openssl."
 cd vendor/openssl
 
 ./config
-make -j ${1}
+sudo make -j ${1}
+#sudo make install
